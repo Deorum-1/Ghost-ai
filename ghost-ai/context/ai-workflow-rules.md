@@ -43,7 +43,7 @@ Project-specific styling, layout changes, and feature logic must be implemented 
 Only modify these files when a task explicitly requires it.
 
 ## Keeping Docs In Sync
-
+   
 Update the relevant context file whenever implementation changes:
 
 - System architecture or boundaries
