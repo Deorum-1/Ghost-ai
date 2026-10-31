@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
+// No unused Button import
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-[calc(100vh-3rem)] items-center justify-center">
       <p>ghost AI</p>
     </div>
   );
