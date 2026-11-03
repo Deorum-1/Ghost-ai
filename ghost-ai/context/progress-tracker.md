@@ -53,6 +53,7 @@ Update this file whenever the current phase, active feature, or implementation s
 - ghost-ai app is a Next.js 16 + TypeScript project, working inside the `ghost-ai/` subdirectory.
 - Dark-only theme per `context/ui-context.md` — CSS tokens in globals.css, Tailwind utilities mapping to those tokens.
 - `lucide-react` is already installed.
+- Clerk middleware is registered in the app-root `proxy.ts` and matches `/editor` requests.
 
 --- 
 **Last Updated**: 2026-10-31
