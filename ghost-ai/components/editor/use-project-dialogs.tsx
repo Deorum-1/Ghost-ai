@@ -37,20 +37,24 @@ const initialProjects: Project[] = [
   { id: "proj-4", name: "Mobile App Shell", slug: "mobile-app-shell", isOwner: false },
 ]
 
+const MAX_SLUG_LENGTH = 48
+
 function slugify(value: string) {
   const normalized = value.trim().normalize("NFKC").toLowerCase()
   const slug = normalized
     .replace(/[^\p{L}\p{N}\p{M}]+/gu, "-")
     .replace(/^-+|-+$/g, "")
 
-  if (slug) {
-    return slug
-  }
+  // Names with no letters or digits (e.g. emoji only) fall back to code points
+  const base =
+    slug ||
+    [...normalized]
+      .map((character) => character.codePointAt(0)?.toString(16))
+      .filter((codePoint): codePoint is string => codePoint !== undefined)
+      .join("-")
 
-  return [...normalized]
-    .map((character) => character.codePointAt(0)?.toString(16))
-    .filter((codePoint): codePoint is string => codePoint !== undefined)
-    .join("-")
+  // Cap by code point, not UTF-16 unit, so characters are never split in half
+  return [...base].slice(0, MAX_SLUG_LENGTH).join("").replace(/-+$/g, "")
 }
 
 const ProjectDialogsContext = createContext<ProjectDialogsContextValue | undefined>(undefined)
