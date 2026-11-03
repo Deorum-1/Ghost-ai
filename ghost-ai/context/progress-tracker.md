@@ -4,37 +4,18 @@ Update this file whenever the current phase, active feature, or implementation s
 
 ## Current Phase
 
-- Editor Chrome
+- Project Dialogs
 
 ## Current Goal
 
-- Build the editor chrome components (feature spec 02-editor-chrome).
+- Complete the editor home and project management dialogs (feature spec 04-project-dialogs).
 
 ## Completed
 
 - Design system: initialized shadcn/ui, added Button, Card, Dialog, Input, Tabs, Textarea, and ScrollArea, configured dark theme tokens, and added `cn()` in `lib/utils.ts` (feature spec 01-design-system).
-
-## In Progress
-
-- Editor Navbar (`components/editor/editor-navbar.tsx`):
-  - Fixed-height top navbar with left, center, and right sections.
-  - Left section includes a sidebar toggle button with `PanelLeftOpen`/`PanelLeftClose` icons.
-  - Right section is empty for now.
-  - Dark background with subtle bottom border.
-
-- Project Sidebar (`components/editor/project-sidebar.tsx`):
-  - Sidebar floats above the editor canvas and slides in from the left.
-  - Accepts `isOpen` prop.
-  - Header with `Projects` title + close button.
-  - Uses shadcn `Tabs` for:
-    - My Projects
-    - Shared
-  - Both tabs show empty placeholder state.
-  - Full-width `New Project` button at the bottom with a `Plus` icon.
-
-- Dialog Pattern:
-  - Uses existing color tokens from `globals.css` for styling.
-  - Supports title, description, and footer actions.
+- Clerk sign-in route: added a Clerk sign-in page at `/sign-in`, wrapped the root with ClerkProvider, and scoped editor chrome to `/editor` (feature spec 03-auth).
+- Editor Chrome: added the fixed navbar and project sidebar shell (feature spec 02-editor-chrome).
+- Project dialogs: added editor home, create/rename/delete dialogs, mock project actions, slug preview, and mobile sidebar backdrop (feature spec 04-project-dialogs).
 
 ## Next Up
 

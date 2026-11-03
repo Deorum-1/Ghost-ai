@@ -26,10 +26,10 @@ export function DialogPattern({
 }: DialogPatternProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-gray-900 border border-gray-800 rounded-3xl">
+      <DialogContent className="rounded-3xl border border-surface-border bg-surface">
         <DialogHeader>
-          <DialogTitle className="text-white">{title}</DialogTitle>
-          <DialogDescription className="text-gray-400">
+          <DialogTitle className="text-copy-primary">{title}</DialogTitle>
+          <DialogDescription className="text-copy-muted">
             {description}
           </DialogDescription>
         </DialogHeader>

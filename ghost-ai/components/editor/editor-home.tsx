@@ -2,10 +2,7 @@
 
 import { Plus } from "lucide-react"
 
-import {
-  ProjectDialogsProvider,
-  useProjectDialogs,
-} from "@/components/editor/use-project-dialogs"
+import { useProjectDialogs } from "@/components/editor/use-project-dialogs"
 import { Button } from "@/components/ui/button"
 
 function EditorHomeContent() {
@@ -33,9 +30,5 @@ function EditorHomeContent() {
 }
 
 export function EditorHome() {
-  return (
-    <ProjectDialogsProvider>
-      <EditorHomeContent />
-    </ProjectDialogsProvider>
-  )
+  return <EditorHomeContent />
 }
