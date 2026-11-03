@@ -2,10 +2,13 @@
 
 import { Plus } from "lucide-react"
 
-import { useProjectDialogs } from "@/components/editor/use-project-dialogs"
+import {
+  ProjectDialogsProvider,
+  useProjectDialogs,
+} from "@/components/editor/use-project-dialogs"
 import { Button } from "@/components/ui/button"
 
-export function EditorHome() {
+function EditorHomeContent() {
   const { openCreateDialog } = useProjectDialogs()
 
   return (
@@ -26,5 +29,13 @@ export function EditorHome() {
         </div>
       </div>
     </section>
+  )
+}
+
+export function EditorHome() {
+  return (
+    <ProjectDialogsProvider>
+      <EditorHomeContent />
+    </ProjectDialogsProvider>
   )
 }
