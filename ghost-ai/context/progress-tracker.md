@@ -4,33 +4,29 @@ Update this file whenever the current phase, active feature, or implementation s
 
 ## Current Phase
 
-- Editor Chrome
+- Project Dialogs
 
 ## Current Goal
 
-- Build the editor chrome components (feature spec 02-editor-chrome).
+- Build the editor home screen and project dialogs/sidebar actions (feature spec 04-project-dialogs).
 
 ## Completed
 
 - Design system: initialized shadcn/ui, added Button and Tabs, configured dark theme tokens, and added `cn()` in `lib/utils.ts` (feature spec 01-design-system).
+- Editor Chrome: built the fixed navbar and project sidebar shell, plus dark-only editor layout scaffolding (feature spec 02-editor-chrome).
 
 ## In Progress
 
-- Editor Navbar (`components/editor/editor-navbar.tsx`):
-  - Fixed-height top navbar with left, center, and right sections.
-  - Left section includes a sidebar toggle button with `PanelLeftOpen`/`PanelLeftClose` icons.
-  - Right section includes Clerk's built-in `UserButton`.
-  - Dark background with subtle bottom border.
+- Editor home screen (`app/editor/page.tsx`):
+  - Minimal centered empty state for creating or opening a project.
+  - Primary `New Project` button opens the create dialog.
 
-- Project Sidebar (`components/editor/project-sidebar.tsx`):
-  - Sidebar floats above the editor canvas and slides in from the left.
-  - Accepts `isOpen` prop.
-  - Header with `Projects` title + close button.
-  - Uses shadcn `Tabs` for:
-    - My Projects
-    - Shared
-  - Both tabs show empty placeholder state.
-  - Full-width `New Project` button at the bottom with a `Plus` icon.
+- Project dialogs and management flow:
+  - Create dialog with project name input and live slug preview.
+  - Rename dialog with prefilled name and Enter-to-submit behavior.
+  - Delete dialog with destructive confirmation styling.
+  - Sidebar `New Project`, rename, and delete actions are wired.
+  - Mock project data is used; no API calls or persistence are added.
 
 ## Next Up
 
