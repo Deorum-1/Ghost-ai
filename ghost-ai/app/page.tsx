@@ -1,9 +1,16 @@
-// No unused Button import
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
+import { Suspense } from 'react'
 
-export default function Home() {
+async function RedirectHome() {
+  const { userId } = await auth()
+  return redirect(userId ? '/editor' : '/sign-in')
+}
+
+export default async function HomePage() {
   return (
-    <div className="flex min-h-[calc(100vh-3rem)] items-center justify-center">
-      <p>ghost AI</p>
-    </div>
-  );
+    <Suspense fallback={<div>Loading...</div>}>
+      <RedirectHome />
+    </Suspense>
+  )
 }
