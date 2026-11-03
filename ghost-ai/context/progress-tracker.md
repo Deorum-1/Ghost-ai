@@ -54,6 +54,7 @@ Update this file whenever the current phase, active feature, or implementation s
 - Added a protected `/editor` landing page so the authenticated home redirect resolves while project and canvas features are pending.
 - Fixed Clerk auth integration for the current SDK: the app now uses `await auth()` checks and `path` props on Clerk prebuilt forms, and the sign-in/sign-up pages import the auth form through the alias path to avoid route-group resolution issues.
 - Removed unreferenced UI components and their wrapper pattern; only Button and Tabs remain because the editor currently uses them.
+- Positioned Clerk social sign-in buttons at the top of the auth forms; provider availability is managed in the Clerk Dashboard.
 
 --- 
 **Last Updated**: 2026-11-02

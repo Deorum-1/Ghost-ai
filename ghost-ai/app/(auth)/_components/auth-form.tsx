@@ -8,6 +8,14 @@ const featureList = [
   'Share live workspaces with your team',
 ]
 
+const authAppearance = {
+  theme: dark,
+  layout: {
+    socialButtonsPlacement: 'top' as const,
+    socialButtonsVariant: 'blockButton' as const,
+  },
+}
+
 const AuthForm = ({ mode }: { mode: 'sign-in' | 'sign-up' }) => {
   const isSignIn = mode === 'sign-in'
   const path = isSignIn ? '/sign-in' : '/sign-up'
@@ -55,14 +63,14 @@ const AuthForm = ({ mode }: { mode: 'sign-in' | 'sign-up' }) => {
                 {isSignIn ? (
                   <SignIn
                     path={path}
-                    appearance={{ theme: dark }}
+                    appearance={authAppearance}
                     routing="path"
                     signUpUrl="/sign-up"
                   />
                 ) : (
                   <SignUp
                     path={path}
-                    appearance={{ theme: dark }}
+                    appearance={authAppearance}
                     routing="path"
                     signInUrl="/sign-in"
                   />
