@@ -242,7 +242,9 @@ if (!token) return res.status(401).json({ error: 'No token' })
 try {
   const claims = await verifyToken(token, {
     jwtKey: process.env.CLERK_JWT_KEY,
+    authorizedParties: ['http://localhost:3000'],
   })
+  if (claims.sts === 'pending') return res.status(401).json({ error: 'Session is pending' })
   // claims.sub = userId
 } catch {
   return res.status(401).json({ error: 'Invalid token' })
@@ -255,12 +257,17 @@ try {
 import jwt from 'jsonwebtoken'
 
 const publicKey = process.env.CLERK_PEM_PUBLIC_KEY!.replace(/\\n/g, '\n')
+const authorizedParties = ['http://localhost:3000']
 const token = req.headers.authorization?.replace('Bearer ', '')
 if (!token) return res.status(401).json({ error: 'No token' })
 
 try {
   const claims = jwt.verify(token, publicKey, { algorithms: ['RS256'] }) as jwt.JwtPayload
-  // Manually check exp and nbf (jsonwebtoken does this automatically, but verify azp if needed)
+  if (typeof claims.azp !== 'string' || !authorizedParties.includes(claims.azp)) {
+    return res.status(401).json({ error: 'Untrusted origin' })
+  }
+  if (claims.sts === 'pending') return res.status(401).json({ error: 'Session is pending' })
+  // Manually check exp and nbf (jsonwebtoken does this automatically)
   // claims.sub = userId
 } catch {
   return res.status(401).json({ error: 'Invalid or expired token' })

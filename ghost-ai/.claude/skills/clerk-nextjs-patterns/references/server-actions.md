@@ -41,13 +41,17 @@ export async function createTeamProject(formData: FormData) {
 import { auth } from '@clerk/nextjs/server';
 
 export async function deleteProject(projectId: string) {
-  const { userId, has } = await auth();
+  const { userId, orgId, has } = await auth();
   if (!userId) throw new Error('Unauthorized');
+  if (!orgId) throw new Error('Must be in an organization');
 
   const canDelete = await has({ permission: 'org:project:delete' });
   if (!canDelete) throw new Error('Missing permission');
 
-  await db.projects.delete({ where: { id: projectId } });
+  const { count } = await db.projects.deleteMany({
+    where: { id: projectId, organizationId: orgId },
+  });
+  if (!count) throw new Error('Project not found in active organization');
 }
 ```
 

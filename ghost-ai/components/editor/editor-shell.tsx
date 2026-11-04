@@ -78,7 +78,7 @@ function EditorShellContent({ children }: EditorShellProps) {
           <span className="text-sm font-medium text-copy-secondary">
             Project name
           </span>
-          <Input
+          <Input className="text-copy-primary"
             autoFocus
             value={createName}
             onChange={(event) => setCreateName(event.target.value)}
@@ -117,6 +117,7 @@ function EditorShellContent({ children }: EditorShellProps) {
         }
       >
         <Input
+          className="text-copy-primary"
           autoFocus
           aria-label="Project name"
           value={renameName}
