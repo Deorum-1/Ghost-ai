@@ -1,9 +1,9 @@
-import { EditorShell } from '@/components/editor/editor-shell'
+import { EditorShell } from "@/components/editor/editor-shell";
 
 export default function EditorLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  return <EditorShell>{children}</EditorShell>
+  return <EditorShell>{children}</EditorShell>;
 }
